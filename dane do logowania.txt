@@ -1,0 +1,18 @@
+http://cpanel.hostinger.pl/
+login: madejpan@gmail.com
+has³o: z02_13k3
+
+ADRES NASZEJ STRONY
+http://noy.esy.es/
+
+FTP: 185.28.20.86 u414909721:z02_13k3
+
+    $mysql_server = "mysql.hostinger.pl"; 
+    $mysql_admin = "u414909721_z02"; 
+    $mysql_pass = "z02_13k3"; 
+    $mysql_db = "u414909721_z02"; 
+
+szef:szef
+norbert:kubacki
+filip:kfc
+smerfny:cukier

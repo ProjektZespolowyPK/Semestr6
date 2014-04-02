@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="utf-8" />
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->     
+		<link type="text/css" href="assets/css/reset.css" rel="stylesheet" media="screen, projection" />
+		<link type="text/css" href="assets/css/style.css" rel="stylesheet" media="screen, projection" />
+		<link type="text/css" href="assets/css/blitzer/jquery-ui-1.10.4.custom.css" rel="stylesheet" media="screen, projection" />
+		<link type="text/css" href="assets/css/jquery.dataTables_themeroller.css" rel="stylesheet" media="screen, projection" />
+		<script src="assets/js/jquery-1.10.2.js"></script>
+		<script src="assets/js/jquery-ui-1.10.4.custom.js"></script>
+		<script src="assets/js/jquery.dataTables.min.js"></script>
+		<title>KKBus sp. z o. o.</title>
+		<script type="text/javascript" charset="utf-8">
+			$(function() {
+				$('#tabs').tabs();
+				$('.button').button();
+				$('.z-tooltipem').tooltip({ content: function(){return $(this).prop('title').replace(/\|/g, '<br />').replace(/\[/g, '<strong>').replace(/\]/g, '</strong>');}});
+				$('.button-set').buttonset();
+				$('input:text, input:password').button().addClass('ui-textfield').off('mouseenter').off('mousedown').off('keydown');
+				$('table').dataTable({
+					"aoColumnDefs": [
+						{ "bSearchable": false, "aTargets": [ 0 ] },
+						{ "bSearchable": false, "aTargets": [ 1 ] },
+						{ "bSearchable": false, "aTargets": [ 3 ] },
+						{ "bSearchable": false, "aTargets": [ 5 ] },
+						{ "bSearchable": false, "bSortable": false, "aTargets": [ 6 ] }
+					],
+					"aaSorting": [[0, 'asc'],[1, 'asc']],
+					"bJQueryUI": true,
+					"sPaginationType": "full_numbers",
+					"bInfo": false,
+					"oLanguage": {
+						"sProcessing":   "Proszę czekać...",
+						"sLengthMenu":   "Pokaż _MENU_ pozycji",
+						"sZeroRecords":  "Nie znaleziono żadnych pasujących indeksów",
+						"sInfo":         "Pozycje od _START_ do _END_ z _TOTAL_ łącznie",
+						"sInfoEmpty":    "Pozycji 0 z 0 dostępnych",
+						"sInfoFiltered": "(filtrowanie spośród _MAX_ dostępnych pozycji)",
+						"sInfoPostFix":  "",
+						"sSearch":       "Szukaj:",
+						"sUrl":          "",
+						"oPaginate": {
+						"sFirst":    "Pierwsza",
+						"sPrevious": "Poprzednia",
+						"sNext":     "Następna",
+						"sLast":     "Ostatnia"
+						}
+					},
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<a href="/"><img src="assets/img/logo.png" alt="KKBus" /></a>
+			</header>
+			<div id="content-wrapper">
+				<div id="tabs">
+					<ul>
+						<li><a href="#tabs-1">Logowanie do systemu</a></li>
+						<li><a href="#tabs-2">Informacje o firmie</a></li>
+						<li><a href="#tabs-3">Cenniki kursów</a></li>
+						<li><a href="#tabs-4">Przeglądarka kursów</a></li>
+					</ul>
+					<div id="tabs-1">
+						<article class="half-box">
+							<header class="ui-widget-header ui-helper-clearfix ui-corner-all">
+								<h1><span class="ui-icon ui-icon-person"></span> Strefa Użytkownika</h1>
+							</header>
+							<section>
+								<form>
+									<div>
+										<label for="logowanie-user-login">Login</label>
+										<input id="logowanie-user-login" type="text">
+									</div>
+									<div>
+										<label for="logowanie-user-haslo">Hasło</label>
+										<input id="logowanie-user-haslo" type="password">
+									</div>
+									<div>
+										<label for="logowanie-user-remember">Zapamiętaj mnie</label>
+										<input id="logowanie-user-remember" class="button" type="checkbox">
+										<input class="button" type="submit" value="Zaloguj">
+									</div>
+									<div class="button-set">
+										<input class="button" type="submit" value="Przypomnij hasło">
+										<input class="button" type="submit" value="Zarejestruj się!">
+									</div>
+								</form>
+							</section>
+						</article>
+						<article class="half-box">
+							<header class="ui-widget-header ui-helper-clearfix ui-corner-all">
+								<h1><span class="ui-icon ui-icon-suitcase"></span> Strefa Pracownika</h1>
+							</header>
+							<section>
+								<form>
+									<div>
+										<label for="logowanie-pracownik-login">Login</label>
+										<input id="logowanie-pracownik-login" type="text">
+									</div>
+									<div>
+										<label for="logowanie-pracownik-haslo">Hasło</label>
+										<input id="logowanie-pracownik-haslo" type="password">
+									</div>
+									<div>
+										<label for="logowanie-pracownik-remember">Zapamiętaj mnie</label>
+										<input id="logowanie-pracownik-remember" class="button" type="checkbox">
+										<input class="button" type="submit" value="Zaloguj">
+									</div>
+									<div class="button-set">
+										<input class="button" type="submit" value="Przypomnij hasło">
+									</div>
+								</form>
+							</section>
+						</article>
+						<div style="clear:both;"></div>
+					</div>
+					<div id="tabs-2">informacje o firmie</div>
+					<div id="tabs-3">cenniki</div>
+					<div id="tabs-4">
+						<table>
+							<thead>
+								<tr>
+									<th>Data kursu</th>
+									<th>Godzina odjazdu</th>
+									<th>Przystanek początkowy</th>
+									<th>Godzina przyjazdu</th>
+									<th>Przystanek końcowy</th>
+									<th>Ilość biletów</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>2014-03-18</td>
+									<td>09:00</td>
+									<td>Kraków</td>
+									<td>11:30</td>
+									<td>Żywiec</td>
+									<td>15</td>
+									<td><span class="ui-icon ui-icon-info z-tooltipem" title="[Dodatkowe informacje]|09:01 Przystanek 1|09:02 Przystanek 2"></span></td>
+								</tr>
+								<tr>
+									<td>2014-03-18</td>
+									<td>09:00</td>
+									<td>Kraków</td>
+									<td>11:30</td>
+									<td>Bielsko-Biała</td>
+									<td>15</td>
+									<td><span class="ui-icon ui-icon-info z-tooltipem" title="[Dodatkowe informacje]|09:01 Przystanek 1|09:02 Przystanek 2"></span></td>
+								</tr>
+								<tr>
+									<td>2014-03-18</td>
+									<td>09:00</td>
+									<td>Węgierska Górka</td>
+									<td>11:30</td>
+									<td>Żywiec</td>
+									<td>15</td>
+									<td><span class="ui-icon ui-icon-info z-tooltipem" title="[Dodatkowe informacje]|09:01 Przystanek 1|09:02 Przystanek 2"></span></td>
+								</tr>
+								<tr>
+									<td>2014-03-18</td>
+									<td>09:00</td>
+									<td>Węgierska Górka</td>
+									<td>11:30</td>
+									<td>Kraków</td>
+									<td>15</td>
+									<td><span class="ui-icon ui-icon-info z-tooltipem" title="[Dodatkowe informacje]|09:01 Przystanek 1|09:02 Przystanek 2"></span></td>
+								</tr>
+								<tr>
+									<td>2014-03-18</td>
+									<td>09:00</td>
+									<td>Kraków</td>
+									<td>11:30</td>
+									<td>Żywiec</td>
+									<td>15</td>
+									<td><span class="ui-icon ui-icon-info z-tooltipem" title="[Dodatkowe informacje]|09:01 Przystanek 1|09:02 Przystanek 2"></span></td>
+								</tr>
+								<tr>
+									<td>2014-03-18</td>
+									<td>09:00</td>
+									<td>Kraków</td>
+									<td>11:30</td>
+									<td>Bielsko-Biała</td>
+									<td>15</td>
+									<td><span class="ui-icon ui-icon-info z-tooltipem" title="[Dodatkowe informacje]|09:01 Przystanek 1|09:02 Przystanek 2"></span></td>
+								</tr>
+								<tr>
+									<td>2014-03-18</td>
+									<td>09:00</td>
+									<td>Węgierska Górka</td>
+									<td>11:30</td>
+									<td>Żywiec</td>
+									<td>15</td>
+									<td><span class="ui-icon ui-icon-info z-tooltipem" title="[Dodatkowe informacje]|09:01 Przystanek 1|09:02 Przystanek 2"></span></td>
+								</tr>
+								<tr>
+									<td>2014-03-18</td>
+									<td>09:00</td>
+									<td>Węgierska Górka</td>
+									<td>11:30</td>
+									<td>Kraków</td>
+									<td>15</td>
+									<td><span class="ui-icon ui-icon-info z-tooltipem" title="[Dodatkowe informacje]|09:01 Przystanek 1|09:02 Przystanek 2"></span></td>
+								</tr>
+								<tr>
+									<td>2014-03-18</td>
+									<td>09:00</td>
+									<td>Kraków</td>
+									<td>11:30</td>
+									<td>Żywiec</td>
+									<td>15</td>
+									<td><span class="ui-icon ui-icon-info z-tooltipem" title="[Dodatkowe informacje]|09:01 Przystanek 1|09:02 Przystanek 2"></span></td>
+								</tr>
+								<tr>
+									<td>2014-03-18</td>
+									<td>09:00</td>
+									<td>Kraków</td>
+									<td>11:30</td>
+									<td>Bielsko-Biała</td>
+									<td>15</td>
+									<td><span class="ui-icon ui-icon-info z-tooltipem" title="[Dodatkowe informacje]|09:01 Przystanek 1|09:02 Przystanek 2"></span></td>
+								</tr>
+								<tr>
+									<td>2014-03-18</td>
+									<td>09:00</td>
+									<td>Węgierska Górka</td>
+									<td>11:30</td>
+									<td>Żywiec</td>
+									<td>15</td>
+									<td><span class="ui-icon ui-icon-info z-tooltipem" title="[Dodatkowe informacje]|09:01 Przystanek 1|09:02 Przystanek 2"></span></td>
+								</tr>
+								<tr>
+									<td>2014-03-18</td>
+									<td>09:00</td>
+									<td>Węgierska Górka</td>
+									<td>11:30</td>
+									<td>Kraków</td>
+									<td>15</td>
+									<td><span class="ui-icon ui-icon-info z-tooltipem" title="[Dodatkowe informacje]|09:01 Przystanek 1|09:02 Przystanek 2"></span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<footer>KKBus sp. z o. o. © 2014</footer>
+		</div>
+	</body>
+</html>
